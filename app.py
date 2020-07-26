@@ -7,6 +7,12 @@ from telegram.ext import MessageHandler, Filters
 
 
 def check_format(text):
+    '''
+    проверяем формат даты введенного пользователем.
+    Ожидается число в формате %d или %dd.
+    Месяц подставлется текущий, либо следующий, если введенная дата меньше текущего числа 
+
+    '''
     if len(text) in (1,2):
         try:
             if datetime.today().day<=int(text):
@@ -27,6 +33,9 @@ def check_format(text):
 
 
 def check_date(date):
+    '''
+    Проверяем рамки для ввода даты
+    '''
     count_days = (date - datetime.today()).days
     if count_days < 28:
         return True
@@ -34,6 +43,10 @@ def check_date(date):
 
 
 def get_weather(date):
+    '''
+    Получаем погодный календарь на целый месяц.
+    Ищем по календарю интересубщую нас дату.
+    '''
     locale.setlocale(locale.LC_TIME, 'ru_RU.UTF-8')
     for day, data in weather_requests.get_weathers().items():
         if datetime.strptime(day, '%d %B').strftime('%d%m') == date.strftime('%d%m'):
@@ -43,6 +56,9 @@ def get_weather(date):
 
 
 def response(update, context):
+    '''
+    ответы для нашенго бота
+    '''
     date = check_format(update.message.text)
     if not date:
         context.bot.send_message(chat_id=update.effective_chat.id,
