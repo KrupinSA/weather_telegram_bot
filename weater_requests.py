@@ -15,6 +15,7 @@ soup = BeautifulSoup(response.content, 'lxml')
 
 raw_climate_calendar = soup.find_all('div', class_ = 'climate-calendar__row')
 
+climate_calendar = {}
 for cur_row in range(START_ROW, END_ROW):
     week = raw_climate_calendar[cur_row].find_all('div', class_ = 'climate-calendar__cell')
     for cur_day in week:
@@ -31,3 +32,4 @@ for cur_row in range(START_ROW, END_ROW):
         pressure = other_data[0].find_all('td')[1].text
         humidity = other_data[1].find_all('td')[1].text
         climate_calendar[cur_data] = temp, rain, pressure, humidity
+
