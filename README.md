@@ -12,6 +12,7 @@ https://core.telegram.org/bots#6-botfather
 pip3 install -r requirements.txt
 
 Экспортируем токен в переменную окружения.
+
 export TELEGRAM_TOKEN="......"
 
 запуск 
