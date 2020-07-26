@@ -1,4 +1,6 @@
-# weather_telegram_bot
+# Данный  сервис позволяет  получить прогноз погоды через телеграмм бота.
 
+Первоначально необходимо получить токен.
+По ссылке можно ознакомиться с инструкцией.
+https://core.telegram.org/bots#6-botfather
 export TELEGRAM_TOKEN="......"
-export TELEGRAM_ID_CHAT="....."
