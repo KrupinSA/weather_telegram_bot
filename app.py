@@ -70,7 +70,8 @@ def response(update, context):
                                  text='Дата не должна превышать тридцать дней от текущей')
         return None
 
-    if weather := get_weather(date):
+    weather = get_weather(date)
+    if weather:
         context.bot.send_message(chat_id=update.effective_chat.id,
                                  text=weather)
         return None
